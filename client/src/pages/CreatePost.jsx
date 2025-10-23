@@ -1,11 +1,9 @@
 import React from 'react'
 
-const App = () => {
+const CreatePost = () => {
   return (
-    <div>
-
-    </div>
+    <div>CreatePost</div>
   )
 }
 
-export default App
+export default CreatePost

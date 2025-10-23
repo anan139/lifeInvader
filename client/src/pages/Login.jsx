@@ -3,10 +3,10 @@ import { assets } from '../assets/assets'
 import { Star } from 'lucide-react'
 import {SignIn} from '@clerk/clerk-react'
 
-const App = () => {
+const Login = () => {
   return (
     <div className='min-h-screen flex flex-col md:flex-row'>
-        <img src={assets.bgImage} alt="" className='absolute top-0 left-0 -z-1 w-full h-full object-cover'/>
+        <img src={assets.bgImage} alt="" className='absolute top-0 left-0 -z-10 w-full h-full object-cover'/>
         <div className='flex-1 flex flex-col items-start justify-between p-6 md:p-10 lg:pl-40'>
           <img src={assets.logo} alt="" className='h-12 object-contain'/>
           <div>
@@ -31,4 +31,4 @@ const App = () => {
   )
 }
 
-export default App
+export default Login

@@ -1,11 +1,9 @@
 import React from 'react'
 
-const App = () => {
+const Messages = () => {
   return (
-    <div>
-
-    </div>
+    <div>Messages</div>
   )
 }
 
-export default App
+export default Messages
