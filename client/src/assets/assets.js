@@ -65,8 +65,8 @@ export const dummyStoriesData = [
         "media_url": "",
         "media_type": "text",
         "background_color": "#4f46e5",
-        "createdAt": "2025-07-25T08:16:06.958Z",
-        "updatedAt": "2025-07-25T08:16:06.958Z",
+        "createdAt": "2025-10-25T08:16:06.958Z",
+        "updatedAt": "2025-10-25T08:16:06.958Z",
     },
     {
         "_id": "688340046e4b42b685068a73",
@@ -75,8 +75,8 @@ export const dummyStoriesData = [
         "media_url": "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg",
         "media_type": "image",
         "background_color": "#4f46e5",
-        "createdAt": "2025-07-25T08:27:48.134Z",
-        "updatedAt": "2025-07-25T08:27:48.134Z",
+        "createdAt": "2025-10-25T08:27:48.134Z",
+        "updatedAt": "2025-10-25T08:27:48.134Z",
     },
     {
         "_id": "68833fe96e4b42b685068a5e",
@@ -85,8 +85,8 @@ export const dummyStoriesData = [
         "media_url": "https://videos.pexels.com/video-files/14447442/14447442-hd_1080_1920_30fps.mp4",
         "media_type": "video",
         "background_color": "#4f46e5",
-        "createdAt": "2025-07-25T08:27:21.289Z",
-        "updatedAt": "2025-07-25T08:27:21.289Z",
+        "createdAt": "2025-10-25T08:27:21.289Z",
+        "updatedAt": "2025-10-25T08:27:21.289Z",
     },
     {
         "_id": "68833e136e4b42b685068937",
@@ -95,8 +95,8 @@ export const dummyStoriesData = [
         "media_url": "https://images.pexels.com/photos/1595385/pexels-photo-1595385.jpeg",
         "media_type": "image",
         "background_color": "#4f46e5",
-        "createdAt": "2025-07-25T08:19:31.080Z",
-        "updatedAt": "2025-07-25T08:19:31.080Z",
+        "createdAt": "2025-10-25T08:19:31.080Z",
+        "updatedAt": "2025-10-25T08:19:31.080Z",
     },
     {
         "_id": "68833d706e4b42b685068875",
@@ -105,8 +105,8 @@ export const dummyStoriesData = [
         "media_url": "",
         "media_type": "text",
         "background_color": "#4f46e5",
-        "createdAt": "2025-07-25T08:16:48.617Z",
-        "updatedAt": "2025-07-25T08:16:48.617Z",
+        "createdAt": "2025-10-25T08:16:48.617Z",
+        "updatedAt": "2025-10-25T08:16:48.617Z",
     },
     {
         "_id": "68833c9e6e4b42b6850687e7",
@@ -115,8 +115,8 @@ export const dummyStoriesData = [
         "media_url": "",
         "media_type": "text",
         "background_color": "#4f46e5",
-        "createdAt": "2025-07-25T08:13:18.111Z",
-        "updatedAt": "2025-07-25T08:13:18.111Z",
+        "createdAt": "2025-10-25T08:13:18.111Z",
+        "updatedAt": "2025-10-25T08:13:18.111Z",
     }
 ]
 
@@ -131,8 +131,8 @@ export const dummyPostsData = [
         ],
         "post_type": "text_with_image",
         "likes_count": [],
-        "createdAt": "2025-07-16T05:54:31.191Z",
-        "updatedAt": "2025-07-16T05:54:31.191Z",
+        "createdAt": "2025-10-16T05:54:31.191Z",
+        "updatedAt": "2025-10-16T05:54:31.191Z",
     },
     {
         "_id": "686e6d0407845749500c24cd",
@@ -141,8 +141,8 @@ export const dummyPostsData = [
         "image_urls": [],
         "post_type": "text",
         "likes_count": [],
-        "createdAt": "2025-07-09T13:22:12.601Z",
-        "updatedAt": "2025-07-09T13:22:12.601Z",
+        "createdAt": "2025-10-09T13:22:12.601Z",
+        "updatedAt": "2025-10-09T13:22:12.601Z",
     },
     {
         "_id": "686e6b21de877d29cf02e2a7",
@@ -151,8 +151,8 @@ export const dummyPostsData = [
         "image_urls": [],
         "post_type": "text",
         "likes_count": [],
-        "createdAt": "2025-07-09T13:14:09.144Z",
-        "updatedAt": "2025-07-09T13:14:09.144Z",
+        "createdAt": "2025-10-09T13:14:09.144Z",
+        "updatedAt": "2025-10-09T13:14:09.144Z",
     },
     {
         "_id": "686e3e47ba0cf0fecba19947",
@@ -165,8 +165,8 @@ export const dummyPostsData = [
         "likes_count": [
             "user_2zdJbcAqiOX9jq2DIueBRQn0lMt"
         ],
-        "createdAt": "2025-07-09T10:02:47.213Z",
-        "updatedAt": "2025-07-09T10:09:37.075Z",
+        "createdAt": "2025-10-09T10:02:47.213Z",
+        "updatedAt": "2025-10-09T10:09:37.075Z",
     },
     {
         "_id": "686e39e86e0585e9e2e58dd3",
@@ -177,8 +177,8 @@ export const dummyPostsData = [
         ],
         "post_type": "text_with_image",
         "likes_count": [],
-        "createdAt": "2025-07-09T09:44:08.626Z",
-        "updatedAt": "2025-07-09T09:44:08.626Z",
+        "createdAt": "2025-10-09T09:44:08.626Z",
+        "updatedAt": "2025-10-09T09:44:08.626Z",
     },
     {
         "_id": "686e361389841ba9f2633201",
@@ -187,8 +187,8 @@ export const dummyPostsData = [
         "image_urls": [],
         "post_type": "text",
         "likes_count": [],
-        "createdAt": "2025-07-09T09:27:47.529Z",
-        "updatedAt": "2025-07-09T09:27:47.529Z",
+        "createdAt": "2025-10-09T09:27:47.529Z",
+        "updatedAt": "2025-10-09T09:27:47.529Z",
     }
 ]
 
