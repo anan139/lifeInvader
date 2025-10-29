@@ -17,7 +17,8 @@ const StoryModal = ({setShowModal, fetchStories}) => {
         }
     }
     const handleCreatedStory = async () => {
-
+        if (fetchStories) fetchStories();
+        setShowModal(false);
     }
   return (
     <div className='fixed inset-0 z-110 min-h-screen bg-black/80 backdrop-blur text-white flex items-center justify-center p-4'>
