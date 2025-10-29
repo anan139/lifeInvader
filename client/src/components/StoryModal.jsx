@@ -1,5 +1,5 @@
-import { ArrowLeft, Sparkle, TextIcon, Upload } from 'lucide-react'
 import React, { useState } from 'react'
+import { ArrowLeft, Sparkle, TextIcon, Upload } from 'lucide-react'
 import { toast } from 'react-hot-toast'
 
 const StoryModal = ({setShowModal, fetchStories}) => {
