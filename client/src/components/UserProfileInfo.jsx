@@ -1,6 +1,6 @@
 import React from 'react'
 import moment from 'moment'
-import { Penbox, Verified, MapPin, Calendar } from 'lucide-react'
+import { PenSquare, Verified, MapPin, Calendar } from 'lucide-react'
 
 const UserProfileInfo = ({ user, posts, profileId, setShowEdit }) => {
   return (
@@ -20,7 +20,7 @@ const UserProfileInfo = ({ user, posts, profileId, setShowEdit }) => {
             </div>
             {!profileId && (
               <button onClick={() => setShowEdit(true)} className='flex items-center gap-2 border border-gray-300 hover:bg-gray-50 px-4 py-2 rounded-lg font-medium transition-colors mt-4 md:mt-0 cursor-pointer'>
-                <Penbox className='w-4 h-4' />
+                <PenSquare className='w-4 h-4' />
                 Edit
               </button>
             )}

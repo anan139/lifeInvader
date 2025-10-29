@@ -27,10 +27,10 @@ const Feed = () => {
       </div>
       <div className='max-xl:hidden sticky top-0'>
         <div className='max-w-xs bg-white text-xs p-4 rounded-md inline-flex flex-col gap-2'>
-          <h3 className='text-slate-800 font-semibold'>sponsored</h3>
+          <h3 className='text-slate-800 font-semibold'>Sponsored</h3>
           <img src={assets.sponsored_img} className='w-full h-40 object-cover rounded-md' alt='' />
-          <p className='text-slate-600'>Email marketing</p>
-          <p className='text-slate-400'>Supercharge your marketing with a powerful, easy-to-use platform built for results.</p>
+          <p className='text-slate-600'>SPRUNK Xtreame</p>
+          <p className='text-slate-400'>Embrace the chaos. The taste of liberation! Unstoppable refreshment for winners</p>
         </div>
         <RecentMessages />
       </div>

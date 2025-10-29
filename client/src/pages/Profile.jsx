@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { dummyPostsData, dummyUserData } from '../assets/assets'
 import UserProfileInfo from '../components/UserProfileInfo'
+import ProfileModal from '../components/ProfileModal'
 import moment from 'moment'
 import PostCard from '../components/PostCard'
 import Loading from '../components/Loading'
@@ -59,7 +60,7 @@ const Profile = () => {
                         ))}
                     </div>
                 )}
-                {showEdit && <p>show profile edit</p>}
+                {showEdit && <ProfileModal setShowEdit={setShowEdit} />}
             </div>
         </div>
     ) : (<Loading />)

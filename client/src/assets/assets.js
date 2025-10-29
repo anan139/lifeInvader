@@ -26,12 +26,12 @@ export const menuItemsData = [
 export const dummyUserData = {
     "_id": "user_2zdFoZib5lNr614LgkONdD8WG32",
     "email": "admin@example.com",
-    "full_name": "John Warren",
-    "username": "john_warren",
-    "bio": "🌍 Dreamer | 📚 Learner | 🚀 Doer\r\nExploring life one step at a time.\r\n✨ Staying curious. Creating with purpose.",
+    "full_name": "Michael Townley",
+    "username": "michael_",
+    "bio": "🌍 NPC | 📚 Curious | 🚀 Delusional\r\nStarting a fake life; one step at a time.\r\n✨ Staying curious. Doing bank and Jewelry store jobs.",
     "profile_picture": sample_profile,
     "cover_photo": sample_cover,
-    "location": "New York, NY",
+    "location": "Los Santos, SA",
     "followers": ["user_2", "user_3"],
     "following": ["user_2", "user_3"],
     "connections": ["user_2", "user_3"],
@@ -44,16 +44,16 @@ export const dummyUserData = {
 const dummyUser2Data = {
     ...dummyUserData,
     _id: "user_2",
-    username: "Richard Hendricks",
-    full_name: "Richard Hendricks",
+    username: "lamar_99",
+    full_name: "Lamar Davis",
     profile_picture: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200",
 }
 
 const dummyUser3Data = {
     ...dummyUserData,
     _id: "user_3",
-    username: "alexa_james",
-    full_name: "Alexa james",
+    username: "tracey_townley",
+    full_name: "Tracey Townley",
     profile_picture: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200&h=200&auto=format&fit=crop",
 }
 
@@ -72,7 +72,7 @@ export const dummyStoriesData = [
         "_id": "688340046e4b42b685068a73",
         "user": dummyUserData,
         "content": "",
-        "media_url": "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg",
+        "media_url": "https://i.ibb.co.com/Kx23s1qM/tailgater.jpg",
         "media_type": "image",
         "background_color": "#4f46e5",
         "createdAt": "2025-10-25T08:27:48.134Z",
@@ -92,7 +92,7 @@ export const dummyStoriesData = [
         "_id": "68833e136e4b42b685068937",
         "user": dummyUserData,
         "content": "",
-        "media_url": "https://images.pexels.com/photos/1595385/pexels-photo-1595385.jpeg",
+        "media_url": "https://i.ibb.co.com/sdQhgw1Z/should-the-fib-tactical-teams-from-gta-v-featured-in-the-v0-ed7tex5zyr5d1.png",
         "media_type": "image",
         "background_color": "#4f46e5",
         "createdAt": "2025-10-25T08:19:31.080Z",
@@ -125,9 +125,9 @@ export const dummyPostsData = [
     {
         "_id": "68773e977db16954a783839c",
         "user": dummyUserData,
-        "content": "We're a small #team with a big vision — working day and night to turn dreams into products, and #products into something people love.",
+        "content": "Another day in this town, another reminder that retirement is a complete joke. Look at this amateur hour. FIB agents in suits, like they’re trying to sell me a damn timeshare. The tactical guys look bored, and the patriot in the blue shirt is clearly just quoting an awful Vinewood movie from the 80s. 🙄\r\n\r\n#JustAnotherTuesday #LosSantosLogic #MyTherapistToldMeToFindAHobby #FIB #WitnessProtectionMyAss #RetiredLife",
         "image_urls": [
-            "https://images.pexels.com/photos/1595385/pexels-photo-1595385.jpeg"
+            "https://i.ibb.co.com/sdQhgw1Z/should-the-fib-tactical-teams-from-gta-v-featured-in-the-v0-ed7tex5zyr5d1.png"
         ],
         "post_type": "text_with_image",
         "likes_count": [],
@@ -137,7 +137,7 @@ export const dummyPostsData = [
     {
         "_id": "686e6d0407845749500c24cd",
         "user": dummyUserData,
-        "content": "Unlock your potential—every small step counts. Stay consistent, stay focused, and trust the process. Growth takes time, but every day is a new chance to be better than yesterday. 🌱✨\r\n\r\n#Motivation #GrowthMindset #DailyInspiration #StayFocused #LevelUp #PositiveVibes #KeepGoing #SelfImprovement #MindsetMatters #SuccessJourney",
+        "content": "I swear, if I have to listen to Dr. Friedlander tell me one more time that my issues stem from repressed childhood trauma, I'm going to commit a trauma right there in his office. You know what my real issue is? Boredom. It's the suburbs, the marriage, the kids who think a job is something you get from a vending machine.\r\n\r\n#RetiredNotRelaxed #MidlifeCrisis #Vinewood #LifeIsAJoke #CanWeDoABigScoreAlready",
         "image_urls": [],
         "post_type": "text",
         "likes_count": [],
@@ -147,7 +147,7 @@ export const dummyPostsData = [
     {
         "_id": "686e6b21de877d29cf02e2a7",
         "user": dummyUserData,
-        "content": "This is a sample paragraph with some #hashtags like #socialmedia and #marketing. Let's find them!",
+        "content": "This is a sample paragraph with some #hashtags like #socialmedia and #marketing.",
         "image_urls": [],
         "post_type": "text",
         "likes_count": [],
@@ -159,7 +159,7 @@ export const dummyPostsData = [
         "user": dummyUserData,
         "content": "",
         "image_urls": [
-            "https://images.pexels.com/photos/1619317/pexels-photo-1619317.jpeg"
+            "https://wallpapercave.com/wp/wp5729074.jpg"
         ],
         "post_type": "image",
         "likes_count": [
@@ -173,7 +173,7 @@ export const dummyPostsData = [
         "user": dummyUserData,
         "content": "Finally , got the car !",
         "image_urls": [
-            "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg"
+            "https://i.ibb.co.com/Kx23s1qM/tailgater.jpg"
         ],
         "post_type": "text_with_image",
         "likes_count": [],
