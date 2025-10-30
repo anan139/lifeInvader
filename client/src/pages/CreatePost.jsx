@@ -15,7 +15,7 @@ const CreatePost = () => {
       <div className="max-w-6xl mx-auto p-6">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-slate-900 mb-2">Create Post</h1>
-          <span className="text-slate-600">share your thoughts with the world</span>
+          <span className="text-slate-600">Share your thoughts with the world</span>
         </div>
         <div className="max-w-xl bg-white p-4 sm:p-8 sm:pb-3 rounded-xl shadow-md space-y-4">
           <div className="flex items-center gap-3">
@@ -66,9 +66,9 @@ const CreatePost = () => {
                   error: <p>Post Not Added</p>,
                 })
               }
-              className="text-sm bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 active:scale-95 transition text-white font-medium px-8 py-2 rounded-md cursor-pointer"
+              className="text-sm bg-gradient-to-r from-red-400 to-rose-600 hover:from-red-600 hover:to-rose-700 active:scale-95 transition text-white font-medium px-8 py-2 rounded-md cursor-pointer"
             >
-              Public Post
+              Publish Post
             </button>
           </div>
         </div>

@@ -5,7 +5,7 @@ import { dummyUserData } from '../assets/assets'
 import { useNavigate } from 'react-router-dom'
 
 const PostCard = ({ post }) => {
-  const postWithHashtags = (post.content || '').replace(/#(\w+)/g, '<span class="text-indigo-600">#$1</span>')
+  const postWithHashtags = (post.content || '').replace(/#(\w+)/g, '<span class="text-red-500">#$1</span>')
   const [likes, setLikes] = useState(post.likes_count || [])
   const currentUser = dummyUserData
   const handleLike = async () => {
@@ -21,7 +21,7 @@ const PostCard = ({ post }) => {
         <div>
           <div className='flex items-center space-x-1'>
             <span>{post.user?.full_name || 'Unknown'}</span>
-            <BadgeCheck className='w-4 h-4 text-blue-500' />
+            <BadgeCheck className='w-4 h-4 text-slate-600' />
           </div>
           <div className='text-gray-500 text-sm'>@{post.user?.username || 'unknown'} • {moment(post.createdAt).fromNow()}</div>
         </div>

@@ -16,7 +16,7 @@ const ChatBox = () => {
 
   return user && (
     <div className='flex flex-col h-screen'>
-      <div className='flex items-center gap-2 p-2 md:px-10 xl:pl-42 bg-gradient-to-r from-indigo-50 to-purple-50 border-b border-gray-300'>
+      <div className='flex items-center gap-2 p-2 md:px-10 xl:pl-42 bg-gradient-to-r from-red-50 to-rose-50 border-b border-gray-300'>
         <img src={user.profile_picture} alt='' className='size-8 rounded-full' />
         <div>
           <p className='font-medium'>{user.full_name}</p>
@@ -48,7 +48,7 @@ const ChatBox = () => {
             )}
             <input type='file' id='image' accept='image/*' hidden onChange={e => setImage(e.target.files[0])} />
           </label>
-          <button onClick={sendMessage} className='bg-gradient-to-br from-indigo-500 to-purple-600 hover:from-indigo-700 hover:to-purple-800 active:scale-95 cursor-pointer text-white p-2 rounded-full'>
+          <button onClick={sendMessage} className='bg-gradient-to-r from-red-400 to-rose-600 hover:from-red-600 hover:to-rose-700 active:scale-95 cursor-pointer text-white p-2 rounded-full'>
             <SendHorizonal size={18} />
           </button>
         </div>

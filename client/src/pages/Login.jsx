@@ -19,8 +19,8 @@ const Login = () => {
               <p>Invasion never felt so good</p>
             </div>
           </div>
-          <h1 className='text-3xl md:text-6xl md:pb-2 font-bold bg-gradient-to-r from-indigo-950 to-indigo-800 bg-clip-text text-transparent'>Putting your personal life in the public domain</h1>
-          <p className='text-xl md:text-3xl text-indigo-900 max-w-72 md:max-w-md'>It's not technology, it's your life!</p>
+          <h1 className='text-3xl md:text-6xl md:pb-2 font-bold bg-gradient-to-r from-red-400 to-red-500 bg-clip-text text-transparent'>Putting your personal life in the public domain</h1>
+          <p className='text-xl md:text-3xl text-red-400 max-w-72 md:max-w-md'>It's not technology, it's your life!</p>
         </div>
         <span className='md:h-10'></span>
       </div>

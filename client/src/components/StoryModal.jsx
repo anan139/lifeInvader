@@ -3,7 +3,7 @@ import { ArrowLeft, Sparkle, TextIcon, Upload } from 'lucide-react'
 import { toast } from 'react-hot-toast'
 
 const StoryModal = ({setShowModal, fetchStories}) => {
-    const bgColors = ["#4f46e5", "#7c3aed", "#db2777", "#e11d48", "#ca8a04", "#0d9488"]
+    const bgColors = ["#e11d48", "#db2777", "#4f46e5", "#7c3aed", "#ca8a04", "#0d9488"]
     const [mode, setMode] = useState("text")
     const [background, setBackground] = useState(bgColors[0])
     const [text, setText] = useState("")
@@ -59,7 +59,7 @@ const StoryModal = ({setShowModal, fetchStories}) => {
                     <Upload size={18}/> Photo/Video
                 </label>
             </div>
-            <button onClick={()=> toast.promise(handleCreatedStory(), {loading: 'Saving...', success: <p>Story Added</p>, error: e => <p>{e.message}</p>,})} className='flex items-center justify-center gap-2 text-white py-3 mt-4 w-full rounded bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 active:scale-95 transition cursor-pointer'>
+            <button onClick={()=> toast.promise(handleCreatedStory(), {loading: 'Saving...', success: <p>Story Added</p>, error: e => <p>{e.message}</p>,})} className='flex items-center justify-center gap-2 text-white py-3 mt-4 w-full rounded bg-gradient-to-r from-red-400 to-rose-600 hover:from-red-600 hover:to-rose-700 active:scale-95 transition cursor-pointer'>
                 <Sparkle size={18}/> Create Story
             </button>
         </div>
