@@ -1,5 +1,5 @@
 import fs from "fs";
-import imageKit from "../configs/imagekit.js";
+import imageKit from '../configs/imageKit.js'
 import Post from "../models/Post.js";
 import User from "../models/User.js";
 

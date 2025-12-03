@@ -7,7 +7,14 @@
             "config": {
                 "includeFiles": [
                     "server/**",
-                    "dist/**"
+                    "configs/**",
+                    "controllers/**",
+                    "models/**",
+                    "routes/**",
+                    "middlewares/**",
+                    "inngest/**",
+                    "*.js",
+                    "*.json"
                 ]
             }
         }
