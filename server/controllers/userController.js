@@ -95,7 +95,7 @@ export const discoverUsers = async (req, res) => {
                 {username: new RegExp(input, 'i')},
                 {email: new RegExp(input, 'i')},
                 {full_name: new RegExp(input, 'i')},
-                {lotaion: new RegExp(input, 'i')},
+                {locaion: new RegExp(input, 'i')},
             ]
         }
        )
@@ -113,7 +113,7 @@ export const followUser = async (req, res) => {
        const {userId} = req.auth()
        const {id} = req.body;
        const user = await User.findById(userId)
-       if(user.following.includes(id)){
+       if(user.followings.includes(id)){
         res.json({success:false, messege: 'You are already following this user'})
        }
        user.followings.push(id);
@@ -149,7 +149,7 @@ export const unfollowUser = async (req, res) => {
 export const sendConnectionRequest = async (req, res) => {
   try {
     const {userId} = req.auth()
-    const {id} = req.body();
+    const {id} = req.body;
 
     const last24Hours = new Date(Date.now() - 24 * 60 *60 * 1000)
     const sendConnectionRequest = await Connection.find({from_user_id: userId, created_at: {$gt: last24Hours}})
