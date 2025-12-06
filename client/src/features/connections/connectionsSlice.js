@@ -9,7 +9,7 @@ const initialState = {
 }
 
 export const fetchConnections = createAsyncThunk('connections/fetchConnections', async(token)=> {
-    const {data} = await api.get('/api/user/connctions', {
+    const {data} = await api.get('/api/user/connections', {
         headers: {Authorization: `Bearer ${token}`}
     })
     return data.success ? data : null;

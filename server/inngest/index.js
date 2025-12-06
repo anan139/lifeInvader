@@ -9,7 +9,7 @@ export const inngest = new Inngest({ id: "lifeinvader-app" });
 
 const syncUserCreation = inngest.createFunction(
     {id: 'sync-user-from-clerk'},
-    {event: 'clerk/user.created'},
+    {event: 'user.created'},
     async({event}) =>{
         const {id, first_name, last_name, email_addresses, image_url} = event.data;
         let username = email_addresses[0].email_address.split('@')[0];
@@ -38,7 +38,7 @@ const syncUserCreation = inngest.createFunction(
 
 const syncUserUpdation = inngest.createFunction(
     {id: 'update-user-from-clerk'},
-    {event: 'clerk/user.updated'},
+    {event: 'user.updated'},
     async({event}) =>{
         const {id, first_name, last_name, email_addresses, image_url} = event.data;
         const updatedUserData = {
@@ -57,7 +57,7 @@ const syncUserUpdation = inngest.createFunction(
 
 const syncUserDeletion = inngest.createFunction(
     {id: 'delete-user-from-clerk'},
-    {event: 'clerk/user.delete'},
+    {event: 'user.delete'},
     async({event}) =>{
         const {id} = event.data;
 
