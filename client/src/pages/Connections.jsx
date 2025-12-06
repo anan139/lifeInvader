@@ -30,11 +30,12 @@ const Connections = () => {
         headers: { Authorization: `Bearer ${await getToken()}` }
       })
       if (data.success) {
-        toast.success(data.message)
-        dispatch(fetchConnections(await getToken()))
-        dispatch(fetchUser(await getToken()))
+        toast.success(data.messege || data.message || 'Following user!')
+        const token = await getToken()
+        await dispatch(fetchUser(token))
+        await dispatch(fetchConnections(token))
       } else {
-        toast.error(data.message)
+        toast.error(data.messege || data.message || 'Failed to follow')
       }
     } catch (error) {
       toast.error(error.message)
@@ -47,11 +48,12 @@ const Connections = () => {
         headers: { Authorization: `Bearer ${await getToken()}` }
       })
       if (data.success) {
-        toast.success(data.message)
-        dispatch(fetchConnections(await getToken()))
-        dispatch(fetchUser(await getToken()))
+        toast.success(data.messege || data.message || 'Unfollowed user!')
+        const token = await getToken()
+        await dispatch(fetchUser(token))
+        await dispatch(fetchConnections(token))
       } else {
-        toast.error(data.message)
+        toast.error(data.messege || data.message || 'Failed to unfollow')
       }
     } catch (error) {
       toast.error(error.message)
@@ -64,10 +66,10 @@ const Connections = () => {
         headers: { Authorization: `Bearer ${await getToken()}` }
       })
       if (data.success) {
-        toast.success(data.message)
+        toast.success(data.messege || data.message || 'Connection accepted!')
         dispatch(fetchConnections(await getToken()))
       } else {
-        toast.error(data.message)
+        toast.error(data.messege || data.message || 'Failed to accept')
       }
     } catch (error) {
       toast.error(error.message)

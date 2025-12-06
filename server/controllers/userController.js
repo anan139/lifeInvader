@@ -244,7 +244,7 @@ export const getUserConnections = async (req, res) => {
       success: true, 
       connections, 
       followers, 
-      followings, 
+      following: followings, 
       pendingConnections: pendingUsers 
     });
     
