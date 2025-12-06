@@ -6,7 +6,7 @@ const ChatBox = () => {
   const messages = dummyMessagesData
   const [text, setText] = useState('')
   const [image, setImage] = useState(null)
-  const [user, setUser] = useState(dummyUserData)
+  const [user] = useState(dummyUserData)
   const messagesEndRef = useRef(null)
   const sendMessage = async () => {}
 

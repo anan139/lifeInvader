@@ -15,7 +15,7 @@ export const getUserData = async (req, res) => {
        res.json({success:true, user})
     } catch (error) {
         console.log(error);
-        res.json({success:false, messege: error.messege})
+        res.json({success:false, messege: error.message})
     }
 }
 
@@ -26,7 +26,7 @@ export const updateUserData = async (req, res) => {
        const tempUser = await User.findById(userId)
        !username && (username = tempUser.username)
        if (tempUser.username !== username) {
-        const user = User.findOne({username})
+        const user = await User.findOne({username})
         if(user){
             username = tempUser.username
         }

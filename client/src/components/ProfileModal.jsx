@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { dummyUserData } from '../assets/assets'
+import { useSelector } from 'react-redux'
 import { Pencil } from 'lucide-react'
 
 const ProfileModal = ({ setShowEdit }) => {
-  const user = dummyUserData
+  const user = useSelector((state) => state.user.value)
   const [editForm, setEditForm] = useState({
     username: user.username,
     bio: user.bio,
