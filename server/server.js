@@ -20,7 +20,7 @@ app.use('/api/inngest', serve({ client: inngest, functions }))
 app.use('/api/user', userRouter)
 app.use('/api/post', postRouter)
 app.use('/api/story', storyRouter)
-app.use('/api/messege', messegeRouter)
+app.use('/api/message', messegeRouter)
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, ()=> console.log(`server is running on port ${PORT}`))
