@@ -123,61 +123,50 @@ export const discoverUsers = async (req, res) => {
 
 export const followUser = async (req, res) => {
   try {
-    const { userId } = req.auth();
+    const { userId } = req.auth()
     const { id } = req.body;
     
-    const user = await User.findById(userId);
-    const targetUser = await User.findById(id);
+    const user = await User.findById(userId)
     
-    if (!targetUser) {
-      return res.json({ success: false, message: 'User not found' });
-    }
-    
-    if (user.followings.some(followingId => followingId.toString() === id)) {
-      return res.json({ success: false, message: 'You are already following this user' });
+    if (user.followings.includes(id)) {
+      return res.json({ success: false, messege: 'You are already following this user' })
     }
     
     user.followings.push(id);
-    await user.save();
+    await user.save()
     
-    targetUser.followers.push(userId);
-    await targetUser.save();
+    const toUser = await User.findById(id)
+    toUser.followers.push(userId)
+    await toUser.save()
     
-    return res.json({ success: true, message: 'You are now following this user' });
+    return res.json({ success: true, messege: 'You are following this user' })
   } catch (error) {
     console.log(error);
-    return res.json({ success: false, message: error.message });
+    return res.json({ success: false, messege: error.message })
   }
-};
+}
+
 
 export const unfollowUser = async (req, res) => {
   try {
-    const { userId } = req.auth();
+    const { userId } = req.auth()
     const { id } = req.body;
     
-    const user = await User.findById(userId);
-    const targetUser = await User.findById(id);
+    const user = await User.findById(userId)
+    user.followings = user.followings.filter(following => following.toString() !== id);
+    await user.save()
     
-    if (!targetUser) {
-      return res.json({ success: false, message: 'User not found' });
-    }
+    const toUser = await User.findById(id)
+    toUser.followers = toUser.followers.filter(follower => follower.toString() !== userId);
+    await toUser.save()
     
-    user.followings = user.followings.filter(
-      followingId => followingId.toString() !== id
-    );
-    await user.save();
-    
-    targetUser.followers = targetUser.followers.filter(
-      followerId => followerId.toString() !== userId
-    );
-    await targetUser.save();
-    
-    return res.json({ success: true, message: 'You are no longer following this user' });
+    return res.json({ success: true, messege: 'You are no longer following this user' })
   } catch (error) {
     console.log(error);
-    return res.json({ success: false, message: error.message });
+    return res.json({ success: false, messege: error.message })
   }
-};
+}
+
 
 export const sendConnectionRequest = async (req, res) => {
   try {
