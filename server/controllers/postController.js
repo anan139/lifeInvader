@@ -6,7 +6,7 @@ import User from "../models/User.js";
 export const addPost = async (req, res) => {
     try {
        const {userId} = req.auth()
-       const {content, post_type} = req.body();
+       const {content, post_type} = req.body;
        const images = req.files
        let image_urls = []
        if(images.length){
@@ -36,10 +36,10 @@ export const addPost = async (req, res) => {
         image_urls,
         post_type,
        })
-       res.json({success:true, messege: "Post created successfully"})
+       res.json({success:true, message: "Post created successfully"})
     } catch (error) {
         console.log(error);
-        res.json({success:false, messege: error.messege})
+        res.json({success:false, message: error.message})
     }
 }
 
@@ -52,7 +52,7 @@ export const getPosts = async (req, res) => {
        res.json({success:true, posts})
     } catch (error) {
         console.log(error);
-        res.json({success:false, messege: error.messege})
+        res.json({success:false, message: error.message})
     }
 }
 
@@ -64,28 +64,28 @@ export const likePost = async (req, res) => {
         if(post.likes_count.includes(userId)){
             post.likes_count = post.likes_count.filter(user => user !== userId)
             await post.save()
-            return res.json({success:true, messege: "Post unliked"})
+            return res.json({success:true, message: "Like removed"})
         }
         else{
             post.likes_count.push(userId)
             await post.save()
-            return res.json({success:true, messege: "Post liked"})
+            return res.json({success:true, message: "Post liked"})
         }
     } catch (error) {
         console.log(error);
-        res.json({success:false, messege: error.messege})
+        res.json({success:false, message: error.message})
     }
 }
 
 export const getFeedPosts = async (req, res) => {
     try {
-       const {userId} = req.auth()  
+       const {userId} = req.auth()
        const user = await User.findById(userId)
-       const userIds = [userId, ...user.connections, ...user.following]
+       const userIds = [userId, ...user.connections, ...user.followings]
        const posts = await Post.find({user: {$in: userIds}}).populate('user').sort({createdAt: -1})
        res.json({success:true, posts})
     } catch (error) {
         console.log(error)
-        res.json({success:false, messege: error.messege})
+        res.json({success:false, message: error.message})
     }
 }

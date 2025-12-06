@@ -63,7 +63,7 @@ export const updateUserData = async (req, res) => {
         const buffer = fs.readFileSync(cover.path)
         const response = await imageKit.upload({
             file: buffer,
-            fileName: profile.originalname,
+            fileName: cover.originalname,
         })
         const url = imageKit.url({
             path: response.filePath,
@@ -88,7 +88,7 @@ export const updateUserData = async (req, res) => {
 export const discoverUsers = async (req, res) => {
     try {
        const {userId} = req.auth()
-       const {input} = req.body();
+       const {input} = req.body;
        const allUsers = await User.find(
         {
             $or:[
@@ -111,7 +111,7 @@ export const discoverUsers = async (req, res) => {
 export const followUser = async (req, res) => {
     try {
        const {userId} = req.auth()
-       const {id} = req.body();
+       const {id} = req.body;
        const user = await User.findById(userId)
        if(user.following.includes(id)){
         res.json({success:false, messege: 'You are already following this user'})
@@ -132,7 +132,7 @@ export const followUser = async (req, res) => {
 export const unfollowUser = async (req, res) => {
     try {
        const {userId} = req.auth()
-       const {id} = req.body();
+       const {id} = req.body;
        const user = await User.findById(userId)
        user.followings = user.followings.filter(user=> user !== id);
        await user.save()
@@ -191,7 +191,7 @@ export const sendConnectionRequest = async (req, res) => {
 export const getUserConnections = async (req, res) => {
   try {
     const {userId} = req.auth()
-    const user = await User.findById(userId).populate('connections followers following')
+    const user = await User.findById(userId).populate('connections followers followings')
 
     const connections = user.connections
     const followers = user.followers

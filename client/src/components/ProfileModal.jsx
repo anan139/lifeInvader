@@ -1,8 +1,13 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Pencil } from 'lucide-react'
+import { updateUser } from '../features/user/userSlice';
+import { useAuth } from '@clerk/clerk-react';
+import toast from 'react-hot-toast';
 
 const ProfileModal = ({ setShowEdit }) => {
+  const {getToken} = useAuth()
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.user.value)
   const [editForm, setEditForm] = useState({
     username: user.username,
@@ -15,7 +20,19 @@ const ProfileModal = ({ setShowEdit }) => {
 
   const handleSaveProfile = async (e) => {
     e.preventDefault()
-    console.log('Saving profile:', editForm)
+    const userData = new FormData();
+    const {full_name, username, bio, location, profile_picture, cover_photo} = editForm
+    userData.append('username', username)
+    userData.append('bio', bio)
+    userData.append('location', location)
+    userData.append('full_name', full_name)
+    profile_picture && userData.append('profile', profile_picture)
+    cover_photo && userData.append('cover', cover_photo)
+    const token = await getToken()
+    
+    return dispatch(updateUser({userData, token})).unwrap().then(() => {
+      setShowEdit(false)
+    })
   }
 
   const handleFileChange = (field, file) => {
@@ -27,8 +44,14 @@ const ProfileModal = ({ setShowEdit }) => {
       <div className='max-w-2xl w-full my-8'>
         <div className='bg-white rounded-lg shadow-lg p-6'>
           <h1 className='text-2xl font-bold text-gray-900 mb-6'>Edit Profile</h1>
-          <form className='space-y-4' onSubmit={handleSaveProfile}>
-            
+          <form className='space-y-4' onSubmit={e=> toast.promise(
+            handleSaveProfile(e), 
+            {
+              loading: 'Saving...',
+              success: 'Profile updated!',
+              error: 'Failed to update'
+            }
+          )}>
             <div className='flex flex-col items-start gap-3'>
               <label className='block text-sm font-medium text-gray-700 mb-1'>
                 Profile Picture

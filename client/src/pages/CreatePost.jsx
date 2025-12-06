@@ -2,13 +2,43 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Image, X } from 'lucide-react';
 import toast from 'react-hot-toast';
+import { useAuth } from "@clerk/clerk-react";
+import api from "../api/axios";
+import { useNavigate } from "react-router-dom";
 
 const CreatePost = () => {
+  const navigate = useNavigate()
   const [content, setContent] = useState('');
   const [images, setImages] = useState([]);
   const user = useSelector((state) => state.user.value)
+  const {getToken} = useAuth()
 
-  const handleSubmit = async () => {};
+  const handleSubmit = async () => {
+    if(!images.length && !content){
+      throw new Error ('Add at least one image or text')
+    }
+    const postType = images.length && content ? 'text_with_image' : images.length ? 'image' : 'text'
+    try {
+      const formData = new FormData();
+      formData.append('content', content)
+      formData.append('post_type', postType)
+      images.map((image)=>{
+        formData.append('images', image)
+      })
+      const {data} = await api.post('/api/post/add', formData, {
+        headers: {Authorization: `Bearer ${await getToken()}`}
+      })
+      if(data.success){
+        navigate('/')
+      }else{
+        console.log(data.message)
+        throw new Error(data.message)
+      }
+    } catch (error) {
+      console.log(error.message)
+      throw new Error(error.message)
+    }
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
@@ -63,7 +93,7 @@ const CreatePost = () => {
                 toast.promise(handleSubmit(), {
                   loading: 'uploading ...',
                   success: <p>Post Added</p>,
-                  error: <p>Post Not Added</p>,
+                  error: (err) => <p>{err.message}</p>,
                 })
               }
               className="text-sm bg-gradient-to-r from-red-400 to-rose-600 hover:from-red-600 hover:to-rose-700 active:scale-95 transition text-white font-medium px-8 py-2 rounded-md cursor-pointer"
