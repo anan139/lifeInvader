@@ -2,17 +2,24 @@ import { clerkClient } from '@clerk/express';
 
 export const protect = async (req, res, next) => {
   try {
-    const authHeader = req.headers.authorization;
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      return res.status(401).json({success: false, message: "No token provided"});
+    const { userId } = req.auth();
+    
+    if (userId) {
+      return next();
     }
-    const token = authHeader.replace('Bearer ', '');
-    const verified = await clerkClient.verifyToken(token);
-    req.userId = verified.sub;
-    req.auth = () => ({ userId: verified.sub });
-    next();
+
+    const authHeader = req.headers.authorization;
+    if (authHeader && authHeader.startsWith('Bearer ')) {
+      const token = authHeader.replace('Bearer ', '');
+      const verified = await clerkClient.verifyToken(token);
+      
+      req.auth = () => ({ userId: verified.sub });
+      return next();
+    }
+    return res.status(401).json({success: false, message: "Not authenticated"});
+    
   } catch (error) {
     console.log('Auth error:', error.message);
-    return res.status(403).json({success: false, message: "Invalid token"});
+    return res.status(403).json({success: false, message: "Invalid authentication"});
   }
 }
