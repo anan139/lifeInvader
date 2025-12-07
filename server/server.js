@@ -14,7 +14,9 @@ const app = express();
 await connectDB();
 const allowedOrigins = [
   'https://life-invader-rho.vercel.app',
-  'http://localhost:5173'
+  'http://localhost:5173',
+  'https://life-invader-server.vercel.app', 
+  'http://localhost:4000',
 ];
 const corsOptions = {
   origin: function (origin, callback) {
