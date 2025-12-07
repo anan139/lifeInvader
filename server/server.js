@@ -11,40 +11,36 @@ import storyRouter from './routes/storyRoutes.js';
 import messegeRouter from './routes/messegeRoutes.js';
 
 const app = express();
+
 await connectDB();
-const allowedOrigins = [
-  'https://life-invader-rho.vercel.app',
-  'http://localhost:5173',
-  'https://life-invader-server.vercel.app', 
-  'http://localhost:4000',
-];
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (!origin) return callback(null, true);
-    
-    if (allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS')); 
-    }
-  },
+
+app.use(cors({
+  origin: [
+    'https://life-invader-rho.vercel.app',
+    'http://localhost:5173',
+    'https://life-invader-server.vercel.app',
+    'http://localhost:4000'
+  ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
   exposedHeaders: ['Content-Range', 'X-Content-Range'],
-  maxAge: 600 
-};
-app.use(cors(corsOptions));
+}));
+
 app.use(express.json());
 app.use(clerkMiddleware());
-app.get('/', (req, res)=> res.send('server is running'))
-app.use('/api/inngest', serve({ client: inngest, functions }))
-app.use('/api/user', userRouter)
-app.use('/api/post', postRouter)
-app.use('/api/story', storyRouter)
-app.use('/api/message', messegeRouter)
 
-const PORT = process.env.PORT || 4000;
-app.listen(PORT, ()=> console.log(`server is running on port ${PORT}`))
+app.get('/', (req, res) => res.send('server is running'));
+
+app.use('/api/inngest', serve({ client: inngest, functions }));
+app.use('/api/user', userRouter);
+app.use('/api/post', postRouter);
+app.use('/api/story', storyRouter);
+app.use('/api/message', messegeRouter);
+
+if (process.env.NODE_ENV !== 'production') {
+  const PORT = process.env.PORT || 4000;
+  app.listen(PORT, () => console.log(`server is running on port ${PORT}`));
+}
 
 export default app;
