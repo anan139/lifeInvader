@@ -12,15 +12,27 @@ import messegeRouter from './routes/messegeRoutes.js';
 
 const app = express();
 await connectDB();
-app.use(cors({
-  origin: [
-    'https://life-invader-rho.vercel.app',
-    'http://localhost:5173',
-  ],
+const allowedOrigins = [
+  'https://life-invader-rho.vercel.app',
+  'http://localhost:5173'
+];
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+    
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS')); 
+    }
+  },
   credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
-}));
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+  exposedHeaders: ['Content-Range', 'X-Content-Range'],
+  maxAge: 600 
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(clerkMiddleware());
 app.get('/', (req, res)=> res.send('server is running'))
