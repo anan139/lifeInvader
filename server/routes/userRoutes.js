@@ -3,10 +3,12 @@ import { acceptConnectionRequest, discoverUsers, followUser, getUserConnections,
 import { protect } from '../middlewares/auth.js';
 import { upload } from '../configs/multer.js';
 import { getUserRecentMesseges } from '../controllers/messegeController.js';
+import cors from 'cors';
 
 const userRouter = express.Router();
 
 userRouter.get('/data', protect, getUserData)
+userRouter.options('/update', cors(corsOptions));
 userRouter.post('/update', protect, upload.fields([{name: 'profile', maxCount: 1}, {name: 'cover', maxCount: 1}]), updateUserData)
 userRouter.post('/discover', protect, discoverUsers)
 userRouter.post('/follow', protect, followUser)
