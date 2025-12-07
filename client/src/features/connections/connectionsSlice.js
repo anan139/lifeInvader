@@ -15,6 +15,17 @@ export const fetchConnections = createAsyncThunk('connections/fetchConnections',
   return data.success ? data : null
 })
 
+const uniqueById = (list = []) => {
+  const map = new Map()
+  list.forEach((item) => {
+    const id = item?._id || item
+    if (id) {
+      map.set(id, item)
+    }
+  })
+  return Array.from(map.values())
+}
+
 const connectionsSlice = createSlice({
   name: 'connections',
   initialState,
@@ -22,10 +33,10 @@ const connectionsSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchConnections.fulfilled, (state, action) => {
       if (action.payload) {
-        state.connections = action.payload.connections || []
-        state.pendingConnections = action.payload.pendingConnections || []
-        state.followers = action.payload.followers || []
-        state.following = action.payload.following || []
+        state.connections = uniqueById(action.payload.connections)
+        state.pendingConnections = uniqueById(action.payload.pendingConnections)
+        state.followers = uniqueById(action.payload.followers)
+        state.following = uniqueById(action.payload.following)
       }
     })
   }

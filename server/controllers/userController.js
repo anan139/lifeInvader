@@ -172,6 +172,20 @@ export const sendConnectionRequest = async (req, res) => {
   try {
     const { userId } = req.auth();
     const { id } = req.body;
+    if (userId === id) {
+      return res.json({ success: false, message: "You cannot connect with yourself" });
+    }
+
+    const requester = await User.findById(userId);
+    if (requester?.connections?.includes(id)) {
+      return res.json({ success: false, message: "Already connected" });
+    }
+
+    const recipient = await User.findById(id);
+    if (!recipient) {
+      return res.json({ success: false, message: "User not found" });
+    }
+
     const last24Hours = new Date(Date.now() - 24 * 60 * 60 * 1000);
     const recentRequests = await Connection.find({
       from_user_id: userId,
@@ -229,9 +243,19 @@ export const getUserConnections = async (req, res) => {
       return res.json({ success: false, message: "User not found" });
     }
     
-    const connections = user.connections;
-    const followers = user.followers;
-    const followings = user.followings;
+    const dedupeUsers = (users = []) => {
+      const map = new Map();
+      users.forEach((u) => {
+        if (u?._id) {
+          map.set(u._id.toString(), u);
+        }
+      });
+      return Array.from(map.values());
+    };
+
+    const connections = dedupeUsers(user.connections);
+    const followers = dedupeUsers(user.followers);
+    const followings = dedupeUsers(user.followings);
     
     const pendingConnections = await Connection.find({
       to_user_id: userId,
@@ -267,13 +291,21 @@ export const acceptConnectionRequest = async (req, res) => {
     if (!connection) {
       return res.json({ success: false, message: "Connection request not found" });
     }
+
+    if (connection.status === 'accepted') {
+      return res.json({ success: false, message: "Already connected" });
+    }
     
     const user = await User.findById(userId);
-    user.connections.push(id);
+    const userConnections = new Set(user.connections.map(String));
+    userConnections.add(id);
+    user.connections = Array.from(userConnections);
     await user.save();
     
     const requestUser = await User.findById(id);
-    requestUser.connections.push(userId);
+    const requestUserConnections = new Set(requestUser.connections.map(String));
+    requestUserConnections.add(userId);
+    requestUser.connections = Array.from(requestUserConnections);
     await requestUser.save();
     
     connection.status = 'accepted';
