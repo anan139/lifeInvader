@@ -28,7 +28,10 @@ app.use(cors({
 }));
 
 app.use(express.json());
-app.use(clerkMiddleware());
+app.use(clerkMiddleware({
+  authorizedParties: ['https://life-invader-rho.vercel.app']
+}));
+
 
 app.get('/', (req, res) => res.send('server is running'));
 
