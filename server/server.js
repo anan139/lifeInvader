@@ -13,7 +13,16 @@ import messegeRouter from './routes/messegeRoutes.js';
 const app = express();
 await connectDB();
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: [
+    'https://life-invader-rho.vercel.app',
+    'http://localhost:5173',
+  ],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 app.use(clerkMiddleware());
 app.get('/', (req, res)=> res.send('server is running'))
 app.use('/api/inngest', serve({ client: inngest, functions }))
