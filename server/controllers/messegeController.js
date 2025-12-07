@@ -97,11 +97,28 @@ export const getChatMesseges = async (req, res) => {
 export const getUserRecentMesseges = async (req, res) => {
   try {
     const { userId } = req.auth();
-    const messeges = await Messege.find({ to_user_id: userId })
-      .populate('from_user_id')
+    const messeges = await Messege.find({
+      $or: [
+        { to_user_id: userId },
+        { from_user_id: userId }
+      ]
+    })
+      .populate('from_user_id to_user_id')
       .sort({ createdAt: -1 });
-      
-    res.json({ success: true, messages: messeges }); 
+
+    // Keep only the latest message per conversation (either direction)
+    const latestByUser = new Map();
+    messeges.forEach((msg) => {
+      const fromId = msg.from_user_id?._id?.toString();
+      const toId = msg.to_user_id?._id?.toString();
+      if (!fromId || !toId) return;
+      const otherUserId = fromId === userId ? toId : fromId;
+      if (!latestByUser.has(otherUserId)) {
+        latestByUser.set(otherUserId, msg);
+      }
+    });
+
+    res.json({ success: true, messages: Array.from(latestByUser.values()) }); 
   } catch (error) {
     console.log(error);
     res.json({ success: false, message: error.message }); 
